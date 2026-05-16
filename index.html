@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Станция 2: Регистрация на рейс</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#eef3ff;
+    text-align:center;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    width:900px;
+    margin:auto;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:20px;
+}
+
+.transport{
+    flex:1;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    background:#fafbff;
+}
+
+input, select{
+    width:180px;   /* ⬅️ УВЕЛИЧИЛ ПОЛЕ */
+    padding:8px;
+    text-align:center;
+    margin-top:10px;
+    font-size:14px;
+}
+
+button{
+    margin-top:20px;
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#4a6cf7;
+    color:white;
+    cursor:pointer;
+}
+
+#result{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.code{
+    margin-top:10px;
+    font-size:20px;
+    font-weight:bold;
+    color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>✈️ Станция 2: Регистрация на рейс</h2>
+
+<p><b>Сейчас:</b> 08:00 | <b>Регистрация заканчивается:</b> 08:20</p>
+
+<div class="row">
+
+    <div class="transport">
+        <p>🚌 Автобус</p>
+        <p>приезжает в 08:05<br>дорога: 15 минут</p>
+        <input id="busTime" placeholder="время прибытия (00:00)">
+        <select id="busRate">
+            <option value="">оценка</option>
+            <option value="bad">худший вариант</option>
+            <option value="ok">впритык</option>
+            <option value="best">лучший вариант</option>
+        </select>
+    </div>
+
+    <div class="transport">
+        <p>🚖 Такси</p>
+        <p>приезжает в 08:10<br>дорога: 7 минут</p>
+        <input id="taxiTime" placeholder="время прибытия (00:00)">
+        <select id="taxiRate">
+            <option value="">оценка</option>
+            <option value="bad">худший вариант</option>
+            <option value="ok">впритык</option>
+            <option value="best">лучший вариант</option>
+        </select>
+    </div>
+
+    <div class="transport">
+        <p>🚇 Метро</p>
+        <p>отправляется в 08:10<br>дорога + пешком: 15 минут</p>
+        <input id="metroTime" placeholder="время прибытия (00:00)">
+        <select id="metroRate">
+            <option value="">оценка</option>
+            <option value="bad">худший вариант</option>
+            <option value="ok">впритык</option>
+            <option value="best">лучший вариант</option>
+        </select>
+    </div>
+
+</div>
+
+<button onclick="check()">Проверить</button>
+
+<div id="result"></div>
+<div class="code" id="code"></div>
+
+</div>
+
+<script>
+function check(){
+
+let correct = {
+    busTime:"08:20",
+    taxiTime:"08:17",
+    metroTime:"08:25",
+
+    busRate:"ok",
+    taxiRate:"best",
+    metroRate:"bad"
+};
+
+let ok = true;
+
+// автобус
+if(document.getElementById("busTime").value.trim() !== correct.busTime ||
+   document.getElementById("busRate").value !== correct.busRate){
+    ok = false;
+}
+
+// такси
+if(document.getElementById("taxiTime").value.trim() !== correct.taxiTime ||
+   document.getElementById("taxiRate").value !== correct.taxiRate){
+    ok = false;
+}
+
+// метро
+if(document.getElementById("metroTime").value.trim() !== correct.metroTime ||
+   document.getElementById("metroRate").value !== correct.metroRate){
+    ok = false;
+}
+
+if(ok){
+    document.getElementById("result").innerText = "✔ Верно!";
+    document.getElementById("code").innerText = "🔐 Код: Нику";
+}else{
+    document.getElementById("result").innerText = "❌ Неверно, попробуй ещё раз!";
+    document.getElementById("code").innerText = "";
+}
+
+}
+</script>
+
+</body>
+</html>
