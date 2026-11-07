@@ -66,13 +66,25 @@ button{
     font-weight:bold;
     color:green;
 }
+.team-label{
+    display:inline-block;
+    margin:5px 0 12px;
+    padding:8px 16px;
+    background:#e8f5ee;
+    border:1px solid #b8ddc5;
+    border-radius:20px;
+    color:#176b50;
+    font-size:15px;
+    font-weight:bold;
+}
+    
 </style>
 </head>
 
 <body>
 
 <div class="card">
-
+<div class="team-label">👥 Команда 5 · 6-Д класс</div>
 <h2>✈️ Станция 2: Регистрация на рейс</h2>
 
 <p><b>Сейчас:</b> 08:00 | <b>Регистрация заканчивается:</b> 08:20</p>
@@ -159,7 +171,7 @@ if(document.getElementById("metroTime").value.trim() !== correct.metroTime ||
 
 if(ok){
     document.getElementById("result").innerText = "✔ Верно!";
-    document.getElementById("code").innerText = "🔐 Код: Нику";
+    document.getElementById("code").innerText = "🔐 Код: Ма";
 }else{
     document.getElementById("result").innerText = "❌ Неверно, попробуй ещё раз!";
     document.getElementById("code").innerText = "";
